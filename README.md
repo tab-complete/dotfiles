@@ -6,14 +6,16 @@ episode actually covers.
 
 ## Install a package
 
-Each top-level folder is a stow package that mirrors `$HOME`.
+Each top-level folder is a stow package that mirrors `$HOME`. Pass the target explicitly:
+stow defaults to the parent of the repo, so `stow karabiner` only "just works" when the
+repo is cloned as `~/dotfiles`.
 
 ```sh
-git clone https://github.com/tab-complete/dotfiles.git
-cd dotfiles && stow karabiner
+git clone https://github.com/tab-complete/dotfiles.git ~/dotfiles-tabcomplete
+cd ~/dotfiles-tabcomplete && stow -t "$HOME" karabiner
 ```
 
-Remove it with `stow -D karabiner`.
+Remove it with `stow -D -t "$HOME" karabiner`.
 
 ## karabiner
 
