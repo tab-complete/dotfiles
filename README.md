@@ -6,16 +6,19 @@ episode actually covers.
 
 ## Install a package
 
-Each top-level folder is a stow package that mirrors `$HOME`. Pass the target explicitly:
-stow defaults to the parent of the repo, so `stow karabiner` only "just works" when the
-repo is cloned as `~/dotfiles`.
+Install [Stow](https://www.gnu.org/software/stow/) with `brew install stow`. Each top-level
+folder is a package that mirrors `$HOME`; pass `-t "$HOME"` so it works wherever the repo is
+cloned:
 
 ```sh
 git clone https://github.com/tab-complete/dotfiles.git ~/dotfiles-tabcomplete
-cd ~/dotfiles-tabcomplete && stow -t "$HOME" karabiner
+cd ~/dotfiles-tabcomplete
+stow -nv -t "$HOME" karabiner   # preview
+stow -v  -t "$HOME" karabiner   # link
 ```
 
-Remove it with `stow -D -t "$HOME" karabiner`.
+Remove it with `stow -D -v -t "$HOME" karabiner`.
+Stow won't overwrite real files: move an existing target aside first, or use `--adopt`.
 
 ## karabiner
 
@@ -37,23 +40,6 @@ Karabiner picks up edits on save.
 The same two rules can be added without the file: Karabiner-Elements → Complex
 Modifications → Add predefined rule, then in the gallery **Change caps_lock to dual keys,
 escape and left_control**, and **Vi Style Arrows** → *Change Control + h/j/k/l to Arrows*.
-
-## Raycast
-
-Raycast's export is password-encrypted and bundles every setting, so it is not in this
-repo. The hotkeys it uses:
-
-| Key | App or action |
-|---|---|
-| Ctrl-1 | Browser |
-| Ctrl-2 | Chat |
-| Ctrl-3 | Terminal |
-| Ctrl-4 | Editor |
-| Ctrl-M | Maximise window to fill the screen |
-| Ctrl-Space | Raycast itself |
-
-Set them in Raycast → Settings → Extensions → Applications (per app), and Window
-Management (Maximise). Nothing else: the map is by role, so it is the same on every Mac.
 
 ## Packages
 
